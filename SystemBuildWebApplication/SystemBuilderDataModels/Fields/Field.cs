@@ -33,21 +33,9 @@ namespace SystemBuilderDataModels
         /// </value>
         public string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets the node identifier.
-        /// </summary>
-        /// <value>
-        /// The node identifier.
-        /// </value>
-        public int NodeTypeId { get; set; }
+        public int NodeId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the node.
-        /// </summary>
-        /// <value>
-        /// The node.
-        /// </value>
-        public virtual NodeType NodeType { get; set; }
+        public Node Node { get; set; }
 
         public int FieldTypeId { get; set; }
 

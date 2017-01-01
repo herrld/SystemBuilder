@@ -32,7 +32,7 @@ namespace SystemBuildeDataAccess
         /// <param name="modelBuilder">The modelBuilder parameter</param>        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Ignore<FieldInstance>();
+            modelBuilder.Ignore<Field>();
             modelBuilder.Entity<FieldType>().HasKey(ft => ft.Id)
                 .Property(ft => ft.Id)
                 .HasDatabaseGeneratedOption
@@ -55,7 +55,7 @@ namespace SystemBuildeDataAccess
 
         public virtual DbSet<NumberField> NumberFields { get; set; }
 
-        public virtual DbSet<StringField> StringFields { get; set; }
+        public virtual DbSet<TextField> StringFields { get; set; }
 
         public virtual DbSet<FieldType> FieldTypes { get; set; }
 
@@ -78,13 +78,7 @@ namespace SystemBuildeDataAccess
             {
                 Name = "base"
             };
-            defaultType.Fields = new List<Field>();
-            defaultType.Fields.Add(new Field()
-            {
-                Name = "Name",
-                FieldTypeId = (int)FieldType.FieldTypes.text,
-                Order = 0
-            });
+            
             context.NodeTypes.AddOrUpdate(defaultType);
             context.SaveChanges();
         }
@@ -104,15 +98,21 @@ namespace SystemBuildeDataAccess
 
         protected void NodeStartingPoint(SystemBuilderContext context)
         {
+            TextField NameField = new TextField()
+            {
+                Name = "Name",
+                Length = 300,
+                FieldTypeId = (int)FieldType.FieldTypes.text
+            };
+
             Node startingNode = new Node()
             {
                 NodeTypeId = 1,
+                IsPrototypeNode = true
             };
-            startingNode.Fields = new List<FieldInstance>();
-            startingNode.Fields.Add(new StringField()
-            {
-                FieldId = 1
-            });
+
+            startingNode.TextFields.Add(NameField);
+
             context.Nodes.AddOrUpdate(startingNode);
             context.SaveChanges();
         }

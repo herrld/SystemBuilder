@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemBuilderDataModels.Fields
 {
-    public class ImageField : FieldInstance
+    public class ImageField : Field
     {
         public string FileName { get; set; }
 

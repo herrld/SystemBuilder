@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SystemBuilderDataModels.Fields
 {
-    public class NumberField : FieldInstance
+    public class NumberField : Field
     {
         public int Value { get; set; }
-         
+
         public int MaxValue { get; set; }
 
         public int MinValue { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemBuilderDataModels.Fields
 {
-    public class StringField : FieldInstance
+    public class TextField : Field
     {
         public string Value { get; set; }
 
