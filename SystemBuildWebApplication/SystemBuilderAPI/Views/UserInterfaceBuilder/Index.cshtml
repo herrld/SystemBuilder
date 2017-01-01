@@ -1,0 +1,15 @@
+﻿
+<div id="Canvas" ondrop="drop(event)" ondragover="allowDrop(event)" ng-repeat="image in $ctrl.Images">
+    <img id="drag1" ng-src="{{$ctrl.ImageDirectory}}/{{image.file}}" draggable="true" ondragstart="drag(event,this)" width="336" height="69" style="position:absolute; left:{{image.x}}px; top:{{image.y}}px">
+</div>
+<br>
+    <ul>
+        <li ng-repeat="image in $ctrl.Images">
+            <img id="drag1" ng-src="{{$ctrl.ImageDirectory}}/{{image.file}}" draggable="true" ondragstart="$ctrl.drag()" width="336" height="69">
+        </li>
+    </ul>
+
+
+
+@*
+    <img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event, this)" width="336" height="69">*@
