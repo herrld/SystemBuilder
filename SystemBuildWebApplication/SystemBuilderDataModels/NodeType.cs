@@ -12,6 +12,8 @@ namespace SystemBuilderDataModels
 
         public string Name { get; set; }
 
+        public ICollection<Field> Fields { get; set; }
+
         public ICollection<Node> Nodes { get; set; }
     }
 }
